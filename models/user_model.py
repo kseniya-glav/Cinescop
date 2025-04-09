@@ -15,6 +15,7 @@ class BaseUser(BaseModel):
         if "@" not in value:
             raise ValueError("Нет символа @")
         return value
+    
 
 class User(BaseUser):
     id: str

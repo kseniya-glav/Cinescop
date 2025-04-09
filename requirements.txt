@@ -3,3 +3,10 @@ requests
 faker
 pydantic
 dotenv
+sqlalchemy 
+psycopg2
+pytz
+fastapi
+uvicorn
+allure-pytest
+allure-python-commons

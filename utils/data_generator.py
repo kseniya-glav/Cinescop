@@ -1,4 +1,3 @@
-'''Генератор тестовых данных'''
 import random
 import string
 from faker import Faker
@@ -61,3 +60,6 @@ class DataGenerator:
             "published": random.choice([True, False]),
             "genreId": random.randint(1, 10)
         }
+        
+    def generate_random_int(length):
+        return ''.join(str(random.randint(0,9)) for _ in range(length))
