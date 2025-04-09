@@ -6,7 +6,7 @@
 3. Создание виртуального окружения  
 ```python3 -m venv venv```
 4. Актировка виртуальной среды  
-```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process``` - изменение прав в текущем терминале (при необходимости)
+```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process``` - изменение прав в текущем терминале (при необходимости)  
 ```venv\Scripts\Activate```
 5. Установка зависимостей  
 ```pip3 install -r requirements.txt```  
@@ -14,7 +14,7 @@
 ## Запуск тестов
 1. Запуск тестов  
 1.1. Все тесты  
-```pytest```
+```pytest```  
 1.2. С метками  
 ```pytest -m slow``` - медленные тесты.  
 ```pytest -m mock``` - тесты моковые данные.  
