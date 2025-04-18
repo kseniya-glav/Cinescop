@@ -12,6 +12,7 @@ def server_worldclockapi():
     server_process.terminate()
     server_process.wait()
        
+       
 @pytest.fixture(scope="session")
 def server_what_is_today():
     server_process = subprocess.Popen(["python", "test_services\service_what_is_today.py"])
@@ -19,6 +20,7 @@ def server_what_is_today():
     yield server_process 
     server_process.terminate()
     server_process.wait()
+
 
 @pytest.fixture(scope="session")
 def wiremock_container():
@@ -35,6 +37,7 @@ def wiremock_container():
         yield  # Передача контроля тестам
     finally:
         subprocess.run(["docker", "stop", "wiremock"], check=False)
+
 
 @pytest.fixture(scope="session")
 def run_wiremock_worldclockap_time(wiremock_container):
@@ -62,3 +65,4 @@ def run_wiremock_worldclockap_time(wiremock_container):
     }
     response = requests.post(wiremock_url, json=mapping)
     assert response.status_code == 201, "Не удалось настроить WireMock"
+    

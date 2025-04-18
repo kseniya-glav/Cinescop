@@ -38,7 +38,7 @@ class TestAuthAPI:
         login_data = {}
         response = api_manager.auth_api.login_user(login_data, expected_status=401)
         assert "error" in response.json(), "Ответ не содержит сообщения об ошибке"
-        
+         
     @allure.title("Тест на регистрацию пользователя с проверкой в базе данных.")
     def test_register_user_db_session(self, api_manager, test_user, db_session):
         response = api_manager.auth_api.register_user(test_user)
@@ -47,3 +47,4 @@ class TestAuthAPI:
         assert users_from_db.count() == 1, "обьект не попал в базу данных"
         user_from_db = users_from_db.first()
         assert user_from_db.email == test_user.email, "Email не совпадает"
+        

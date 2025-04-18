@@ -10,3 +10,5 @@ fastapi
 uvicorn
 allure-pytest
 allure-python-commons
+playwright
+pytest-playwright

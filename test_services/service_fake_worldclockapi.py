@@ -8,6 +8,7 @@ app = FastAPI()
 def ping():
     return "PONG!"
 
+
 @app.get("/fake/worldclockapi/api/json/utc/now")
 def get_current_utc_time():
     now = datetime.now(pytz.utc)
@@ -25,6 +26,8 @@ def get_current_utc_time():
     
     return response
 
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=16001)
+    

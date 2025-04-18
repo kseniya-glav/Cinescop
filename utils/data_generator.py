@@ -37,7 +37,6 @@ class DataGenerator:
 
         return ''.join(password)
     
-
     @staticmethod
     def valid_data_for_create_movies():
         return {
@@ -49,7 +48,7 @@ class DataGenerator:
             "published": random.choice([True, False]),
             "genreId": random.randint(1, 10)
         }
-        
+                
     @staticmethod
     def min_valid_data_for_create_movies():
         return {
@@ -60,6 +59,7 @@ class DataGenerator:
             "published": random.choice([True, False]),
             "genreId": random.randint(1, 10)
         }
-        
+          
     def generate_random_int(length):
         return ''.join(str(random.randint(0,9)) for _ in range(length))
+    

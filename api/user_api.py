@@ -1,23 +1,23 @@
 from custom_requester.custom_requester import CustomRequester
-from constants.const import AUTH_URL, USER, USER_LOCATOR
+from constants.const import AUTH_DEV_CINESCOPE_URL, USER_ENDPOINT, USER_LOCATOR_ENDPOINT
 
 class UserAPI(CustomRequester):
     """Класс для работы с API пользователей."""
     def __init__(self, session):
-        super().__init__(session= session, base_url = AUTH_URL)
+        super().__init__(session= session, base_url = AUTH_DEV_CINESCOPE_URL)
         self.session = session
 
     def get_user(self, user_locator, expected_status = 200):
         return self.send_requests(
             method = "GET",
-            endpoint = USER_LOCATOR.format(user_locator = user_locator),
+            endpoint = USER_LOCATOR_ENDPOINT.format(user_locator = user_locator),
             expected_status = expected_status
         )
         
     def create_user(self, user_data, expected_statuc = 201):
         return self.send_requests(
             method="POST",
-            endpoint=USER,
+            endpoint=USER_ENDPOINT,
             data = user_data,
             expected_status=expected_statuc
         )

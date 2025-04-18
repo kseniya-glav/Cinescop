@@ -114,7 +114,7 @@ class TestMoviesAPI:
             not_movie_id = max([movie.id for movie in response.movies]) + 1000
         with allure.step("ОШИБКА: невозможно удалить фильм с несуществующим id"):
             assert ErrorResponse(**super_admin.api.movies_api.delete_movies(not_movie_id, expected_status = 404).json())
-        
+           
     @allure.title("Получение всех отзывов для фильма.")
     def test_get_movies_reviews_id(self, common_user):
         with allure.step("Получаем список фильмов"):
@@ -130,7 +130,7 @@ class TestMoviesAPI:
     def test_failed_role(self, common_user, new_movies):
         with allure.step("ОШИБКА: нет доступа для создания фильма"):
             assert ErrorResponse(**common_user.api.movies_api.post_movies(json = new_movies, expected_status = 403).json())
-        
+               
     @allure.title("Создание и удаление фильма с проверкой в базе данных")
     def test_create_delete_movie(self, new_movies, super_admin, db_session):
         with allure.step("Проверяем отсутствие фильма с названием, идентичным новому"):
@@ -142,6 +142,7 @@ class TestMoviesAPI:
             assert (movies_from_db).count(), "В базе уже присутствует фильм с таким названием"
             assert movies_from_db.first().created_at >= (datetime.datetime.now(timezone('UTC')).replace(tzinfo=None) - datetime.timedelta(minutes=5)), "Сервис выставил время создания с большой погрешностью"
         with allure.step("Удаляем добавленный фильм"):
-            assert MovieSchema(**super_admin.api.movies_api.delete_movies(id=response.id).json())
+            assert MovieSchema(**super_admin.api.movies_api.delete_movies(id_movie=response.id).json())
         with allure.step("Проверяем отсутствие удаленного фильма в базе"):
             assert not db_session.query(MovieDBModel).filter(MovieDBModel.name == new_movies["name"]).count(), "Фильм не был удален из базы!"
+            

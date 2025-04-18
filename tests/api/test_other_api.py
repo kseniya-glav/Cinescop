@@ -72,3 +72,4 @@ class TestAccountTransactionTemplate:
                 db_session.delete(stan)
                 db_session.delete(bob)
                 db_session.commit()
+                

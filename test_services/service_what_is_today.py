@@ -9,6 +9,7 @@ app = FastAPI()
 class DateTimeRequest(BaseModel):
     currentDateTime: str  # Формат: "2025-02-13T21:43Z"
 
+
 russian_holidays = {
     "01-01": "Новый год",
     "01-07": "Рождество Христово",
@@ -20,6 +21,7 @@ russian_holidays = {
     "11-04": "День народного единства",
     "12-31": "Канун Нового года"
 }
+
 
 @app.post("/what_is_today")
 def what_is_today(request: DateTimeRequest):
@@ -36,6 +38,7 @@ def what_is_today(request: DateTimeRequest):
 @app.get("/ping")
 def ping():
     return "PONG!"
+
 
 if __name__ == "__main__":
     import uvicorn

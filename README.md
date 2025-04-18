@@ -4,13 +4,15 @@
 2. Переход в директорию Cinescop  
 ```cd Cinescope```
 3. Создание виртуального окружения  
-```python3 -m venv venv```
+```python -m venv venv```
 4. Актировка виртуальной среды  
 ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process``` - изменение прав в текущем терминале (при необходимости)  
 ```venv\Scripts\Activate```
 5. Установка зависимостей  
 ```pip3 install -r requirements.txt```  
-    
+6. Установка браузеров для тестов UI  
+```playwright install```
+
 ## Запуск тестов
 1. Запуск тестов  
 1.1. Все тесты  
@@ -22,5 +24,6 @@
 ```pytest -m userAPI``` -  тесты crud-операции с пользователем.  
 ```pytest -m moviesAPI``` - тесты crud-операции с фильмами.  
 ```pytest -m transaction``` - тесты транзакция в бд.  
+```pytest -m authUI``` - тесты регистрация и авторизация пользователя.  
 2. Генерация отчёта allure  
 ```allure serve ./allure-results```  

@@ -5,7 +5,7 @@ from resources.db_creds import DataBaseMoviesCreds as db
 from models.db_model import UserDBModel
 from utils.data_generator import DataGenerator
 import datetime
-engine = create_engine(f"postgresql+psycopg2://{db.USERNAME}:{db.PASSWORD}@{db.HOST}:{db.PORT}/{db.DATABASE_NAME}") # Создаем движок (engine) для подключения к базе данных
+engine = create_engine(f"postgresql+psycopg2://{db.USERNAME}:{db.PASSWORD}@{db.HOST}:{db.PORT}/{db.NAME}") # Создаем движок (engine) для подключения к базе данных
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine) # Создаем фабрику сессий
 
 @pytest.fixture(scope="module")
@@ -36,3 +36,4 @@ def db_session():
     session.delete(test_user)
     session.commit()
     session.close()
+    

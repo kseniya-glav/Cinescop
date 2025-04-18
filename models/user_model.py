@@ -3,6 +3,7 @@ from typing import Optional
 from constants.roles import Roles 
 import datetime
 
+
 class BaseUser(BaseModel):
     email: str = Field(pattern=r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")
     fullName: str = Field(min_length=1, max_length=100, description="Полное имя пользователя")
@@ -20,6 +21,7 @@ class BaseUser(BaseModel):
 class User(BaseUser):
     id: str
 
+
 class UserRegistr(BaseUser):
     password: str = Field(min_length=8)
     passwordRepeat: str = Field(description="Пароли должны совпадать")
@@ -29,6 +31,7 @@ class UserRegistr(BaseUser):
         if "password" in info.data and value != info.data["password"]:
             raise ValueError("Пароли не совпадают")
         return value
+    
     
 class UserRegistrResponse(User):
     createdAt: str = Field(description="Дата и время создания пользователя в формате ISO 8601")
@@ -40,6 +43,7 @@ class UserRegistrResponse(User):
         except ValueError:
             raise ValueError("Некорректный формат даты и времени")
         return value
+
 
 class UserLoginResponse(BaseModel):
     user: User

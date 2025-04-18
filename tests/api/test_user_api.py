@@ -28,4 +28,4 @@ class TestUserAPI:
     def test_get_user_by_id_common_user(self, common_user):
         with allure.step("Пробуем получить данные о пользователя, не имея на это прав"):
             common_user.api.user_api.get_user(common_user.email, expected_status=403)
- 
+            

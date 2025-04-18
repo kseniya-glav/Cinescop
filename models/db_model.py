@@ -3,6 +3,7 @@ from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
+
 class UserDBModel(Base):
     """Модель для таблицы users."""
     __tablename__ = 'users'
@@ -15,6 +16,7 @@ class UserDBModel(Base):
     verified = Column(Boolean)
     banned = Column(Boolean)
     roles = Column(String)
+    
     
 class MovieDBModel(Base):
     """Модель для таблицы movies."""
@@ -30,7 +32,9 @@ class MovieDBModel(Base):
     published = Column(Boolean)
     created_at = Column(DateTime)
     
+    
 class AccountTransactionTemplate(Base):
     __tablename__ = 'accounts_transaction_template'
     user = Column(String, primary_key=True)
     balance = Column(Integer, nullable=False)
+    

@@ -29,9 +29,11 @@ class WorldClockResponse(BaseModel):
 class DateTimeRequest(BaseModel):
     currentDateTime: str  # Формат: "2025-02-13T21:43Z"
 
+
 # Модель для ответа от сервиса TodayIsHoliday
 class WhatIsTodayResponse(BaseModel):
     message: str
+
 
 #Функция выолняющая запрос в сервис worldclockapi для получения текущей даты
 def get_worldclockap_time() -> WorldClockResponse:
@@ -44,6 +46,7 @@ def get_worldclockap_time() -> WorldClockResponse:
     #Modul_4\Cinescope\tests\api\test_mock_services.py
     #Функция выполняющая запрос в Fake сервис worldclockapi для получения текущей даты 
     
+    
 def get_fake_worldclockap_time() -> WorldClockResponse:
         # Выполняем GET-запрос
     response = requests.get("http://127.0.0.1:16001/fake/worldclockapi/api/json/utc/now")  #Запрос в фейк сервис
@@ -51,6 +54,7 @@ def get_fake_worldclockap_time() -> WorldClockResponse:
     assert response.status_code == 200, "Удаленный сервис недоступен"
         # Парсим JSON-ответ с использованием Pydantic модели
     return  WorldClockResponse(**response.json())
+
 
 @allure.epic("Тестирование сервиса TodayIsHoliday")
 @allure.feature("Тестирование работоспособности сервисов worldclockap")
@@ -87,6 +91,7 @@ class TestTodayIsHolidayServiceAPI:
         #Проводим валидацию ответа тестируемого сервиса
         assert what_is_today_data.message ==  "Сегодня нет праздников в России.", "Сегодня нет праздника!"
 
+
 @allure.epic("Тестирование сервиса TodayIsHoliday")
 @allure.feature("Тестирование Mock")
 @pytest.mark.mock
@@ -114,6 +119,7 @@ class TestByMockTodayIsHolidayServiceAPI:
         # Парсим JSON-ответ от тестируемого сервиса с использованием Pydantic модели
         what_is_today_data = WhatIsTodayResponse(**what_is_today_response.json())
         assert what_is_today_data.message == "Новый год", "ДОЛЖЕН БЫТЬ НОВЫЙ ГОД!"
+
 
 @allure.epic("Тестирование сервиса TodayIsHoliday")
 @allure.feature("Тестирование Stub")
@@ -147,6 +153,7 @@ class TestStubTodayIsHolidayServiceAPI:
         # Проверяем, что ответ соответствует ожидаемому
         assert what_is_today_data.message == "День Победы", "ДОЛЖЕН БЫТЬ ДЕНЬ ПОБЕДЫ!"
 
+
 @allure.epic("Тестирование сервиса TodayIsHoliday")
 @allure.feature("Тестирование WireMock")
 @pytest.mark.mock
@@ -175,6 +182,7 @@ class TestWireMockTodayIsHolidayServiceAPI:
         what_is_today_data = WhatIsTodayResponse(**what_is_today_response.json())
         # Проверяем, что ответ соответствует ожидаемому
         assert what_is_today_data.message == "Международный женский день", "8 марта же?"
+
 
 @allure.epic("Тестирование сервиса TodayIsHoliday")
 @allure.feature("Тестирование Fake")
@@ -205,3 +213,4 @@ class TestFakeTodayIsHolidayServiceAPI:
         # Парсим JSON-ответ от тестируемого сервиса с использованием Pydantic модели
         what_is_today_data = WhatIsTodayResponse(**what_is_today_response.json())
         assert what_is_today_data.message ==  "Сегодня нет праздников в России.", "Сегодня нет праздника!"
+        
