@@ -24,6 +24,6 @@
 ```pytest -m userAPI``` -  тесты crud-операции с пользователем.  
 ```pytest -m moviesAPI``` - тесты crud-операции с фильмами.  
 ```pytest -m transaction``` - тесты транзакция в бд.  
-```pytest -m authUI``` - тесты регистрация и авторизация пользователя.  
+```pytest -m ui``` - тесты регистрация и авторизация пользователя.  
 2. Генерация отчёта allure  
 ```allure serve ./allure-results```  
